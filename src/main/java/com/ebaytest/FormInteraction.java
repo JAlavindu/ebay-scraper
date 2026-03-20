@@ -29,21 +29,21 @@ public class FormInteraction {
         categorySelect.selectByIndex(1);
         //categorySelect.selectByVisibleText("Exact words, exact order");
 
-        WebElement searchCheckbox1 = driver.findElement(By.name("LH_TitleDesc"));
+        WebElement searchCheckbox1 = driver.findElement(By.id("s0-1-20-5[1]-[0]-LH_TitleDesc"));
         searchCheckbox1.click();
         Assert.assertTrue(searchCheckbox1.isSelected(), "Search checkbox 1 was not selected!");
 
-        WebElement searchCheckbox2 = driver.findElement(By.name("LH_Complete"));
+        WebElement searchCheckbox2 = driver.findElement(By.className("checkbox__control"));
         searchCheckbox2.click();
         Assert.assertTrue(searchCheckbox2.isSelected(), "Search checkbox 2 was not selected!");
 
-        WebElement minPricElement = driver.findElement(By.name("_udlo"));
+        WebElement minPricElement = driver.findElement(By.cssSelector("input[name='_udlo']"));
         minPricElement.sendKeys("100");
         String actualMinPrice = minPricElement.getAttribute("value");
         Assert.assertEquals(actualMinPrice, "100", "Minimum price was not set correctly!");
         System.out.println("Minimum price validated successfully: " + actualMinPrice);
 
-        WebElement maxPricElement = driver.findElement(By.name("_udhi"));
+        WebElement maxPricElement = driver.findElement(By.cssSelector("input[id='s0-1-20-5[2]-@range-comp[]-@range-textbox[]_1-textbox']"));
         maxPricElement.sendKeys("500");
         String actualMaxPrice = maxPricElement.getAttribute("value");
         Assert.assertEquals(actualMaxPrice, "500", "Maximum price was not set correctly!");
