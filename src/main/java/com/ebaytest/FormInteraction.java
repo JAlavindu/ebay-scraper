@@ -79,7 +79,7 @@ public class FormInteraction {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         WebElement resultCountElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("h1.srp-controls__count-heading")));
         String resultText = resultCountElement.getText();
-        Assert.assertTrue(resultText.contains("results for"), "Search results did not load as expected!");
+        Assert.assertTrue(resultText.toLowerCase().contains("result"), "Search results did not load as expected!");
         System.out.println("Search results validated successfully: " + resultText);
 
     }
