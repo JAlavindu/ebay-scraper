@@ -90,4 +90,45 @@ public class TestExecutionControlTest {
         System.out.println("Form submission validation passed. Results heading: " + resultsText);
     }
 
+    /**
+     * Why disable tests?
+     * 1. A feature is currently broken (known bug) and you don't want the CI/CD pipeline to fail while developers are fixing it.
+     * 2. The test is hitting a 3rd party API that is temporarily down or rate-limited.
+     * 3. The test is still being written/developed and isn't ready to be executed yet.
+     */
+
+    // Method 1: Skipping using enabled=false
+    // This test will be completely ignored by TestNG. It won't even show up in the skipped count.
+    @Test(enabled = false)
+    public void testBrokenFeature_WillBeSkipped() {
+        System.out.println("This should NEVER print because the test is disabled.");
+        driver.get("https://www.ebay.com/broken-page");
+        Assert.fail("This test is currently broken, but won't fail because it is disabled.");
+    }
+
+    // Method 2: Another example of enabled=false with priority
+    @Test(priority = 5, enabled = false)
+    public void testIncompleteFeature_WillBeSkipped() {
+        System.out.println("This test is disabled because it is not finished being written yet.");
+    }
+
+    // Method 3: Skipping conditionally using SkipException
+    // This test WILL show up in testing reports as "Skipped" (yellow) instead of passed/failed.
+    @Test(priority = 6)
+    public void testConditionalSkip() {
+        System.out.println("@Test: Checking if we should skip this test conditionally");
+        
+        // Example condition: Let's pretend this test should only run on weekends
+        boolean isWeekend = false; // Imagine this is calculated dynamically
+        
+        if (!isWeekend) {
+            // Throwing SkipException stops the test immediately and marks it as SKIPPED
+            throw new org.testng.SkipException("Skipping test because it is not the weekend.");
+        }
+        
+        System.out.println("This will only print if the test is NOT skipped.");
+        driver.get("https://www.ebay.com/");
+    }
+
+
 }
