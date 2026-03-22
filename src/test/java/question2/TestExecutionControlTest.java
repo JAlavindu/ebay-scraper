@@ -69,6 +69,25 @@ public class TestExecutionControlTest {
         System.out.println("Input constraint validation passed. Search box maxlength: " + maxLength);
     }
 
-    
+    @Test(priority = 4)
+    public void testSuccessfulSubmission(){
+        System.out.println("@Test: Validating successful form submission");
+
+        driver.get("https://www.ebay.com/");
+        
+        WebElement searchBox = driver.findElement(By.id("gh-ac"));
+        searchBox.sendKeys("laptop");
+
+        WebElement searchButton = driver.findElement(By.id("gh-btn"));
+        searchButton.click();
+
+        WebElement resultsHeading = driver.findElement(By.cssSelector("h1.srp-controls__count-heading"));
+        Assert.assertTrue(resultsHeading.isDisplayed(), "Results heading is not displayed after form submission!");
+
+        String resultsText = resultsHeading.getText();
+        Assert.assertTrue(resultsText.toLowerCase().contains("result"), "Results heading does not contain 'result'!");
+
+        System.out.println("Form submission validation passed. Results heading: " + resultsText);
+    }
 
 }
