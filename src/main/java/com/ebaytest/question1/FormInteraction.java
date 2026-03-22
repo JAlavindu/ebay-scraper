@@ -1,12 +1,15 @@
-package com.ebaytest;
+package com.ebaytest.question1;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public class Main {
+public class FormInteraction {
+
     
+
     public static void main(String[] args) {
        WebDriver driver;
 

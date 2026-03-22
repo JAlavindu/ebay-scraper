@@ -1,26 +1,22 @@
-package com.ebaytest;
+package com.ebaytest.question1;
 
 import java.time.Duration;
 import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebDriver.Options;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
-public class FormInteraction {
-
-    TestBrowserCommands testBrowserCommands = new TestBrowserCommands();
-
+public class ElementInteraction {
     public void advancedNavigation(WebDriver driver){
         driver.navigate().to("https://www.ebay.com/sch/ebayadvsearch");
         
         String currentURL = driver.getCurrentUrl();
-        testBrowserCommands.testBrowser(currentURL, driver);
+        testBrowser(currentURL, driver);
 
         WebElement keywordInput = driver.findElement(By.xpath("//input[@id='_nkw']"));
         keywordInput.sendKeys("laptop");
@@ -82,5 +78,24 @@ public class FormInteraction {
         Assert.assertTrue(resultText.toLowerCase().contains("result"), "Search results did not load as expected!");
         System.out.println("Search results validated successfully: " + resultText);
 
+    }
+
+    public void testBrowser(String currentURL, WebDriver driver) {
+        System.out.println("=== Browser Commands Test ===");
+
+        Assert.assertTrue(
+                currentURL.contains("ebay.com"),
+                "Navigation failed! URL does not contain 'ebay.com'"
+            );
+        
+        Assert.assertFalse(
+                driver.getTitle().isEmpty(),
+                "Page title is empty — page may not have loaded!"
+            );
+
+        System.out.println("Navigation validated successfully!");
+        System.out.println("Page Title: " + driver.getTitle() + "character length: " + driver.getTitle().length());
+        System.out.println("Current URL: " + currentURL);
+        System.out.println("Page source length: " + driver.getPageSource().length());
     }
 }

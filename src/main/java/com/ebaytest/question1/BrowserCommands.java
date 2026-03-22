@@ -1,4 +1,4 @@
-package com.ebaytest;
+package com.ebaytest.question1;
 
 import java.time.Duration;
 
@@ -8,7 +8,7 @@ public class BrowserCommands {
 
     private WebDriver driver;
     FormInteraction formInteraction = new FormInteraction();
-    TestBrowserCommands testBrowserCommands = new TestBrowserCommands();
+    ElementInteraction elementInteraction = new ElementInteraction();
 
     public void openBrowser(WebDriver driver) {
 
@@ -17,8 +17,8 @@ public class BrowserCommands {
         
         driver.get("https://www.ebay.com/");
         String currentURL = driver.getCurrentUrl();
-        testBrowserCommands.testBrowser(currentURL, driver);
-        formInteraction.advancedNavigation(driver);
+        elementInteraction.testBrowser(currentURL, driver);
+        elementInteraction.advancedNavigation(driver);
         
     }
 
