@@ -132,3 +132,115 @@ public class TestExecutionControlTest {
 
 
 }
+
+// package question2;
+
+// import java.time.Duration;
+// import org.openqa.selenium.By;
+// import org.openqa.selenium.WebDriver;
+// import org.openqa.selenium.WebElement;
+// import org.openqa.selenium.chrome.ChromeDriver;
+// import org.openqa.selenium.support.ui.ExpectedConditions;
+// import org.openqa.selenium.support.ui.WebDriverWait;
+// import org.testng.Assert;
+// import org.testng.annotations.AfterClass;
+// import org.testng.annotations.BeforeClass;
+// import org.testng.annotations.Test;
+
+// import io.github.bonigarcia.wdm.WebDriverManager;
+
+// public class TestExecutionControlTest {
+//     WebDriver driver;
+//     WebDriverWait wait;
+
+//     @BeforeClass
+//     public void setUp() {
+//         System.out.println("@BeforeClass: Setting up test environment");
+//         WebDriverManager.chromedriver().setup();
+//         driver = new ChromeDriver();
+//         driver.manage().window().maximize();
+//         // Setup explicit wait for elements that take time to load (very important for eBay)
+//         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+//     }
+
+//     @Test(priority = 1)
+//     public void testCheckNavigation() {
+//         System.out.println("@Test Priority 1: Navigating to eBay Sign In and verifying title");
+        
+//         // Navigate directly to the Sign In page
+//         driver.get("https://signin.ebay.com/ws/eBayISAPI.dll?SignIn");
+        
+//         String pageTitle = driver.getTitle();
+//         System.out.println("Sign In Page title: " + pageTitle);
+//         Assert.assertTrue(pageTitle.contains("Sign in") || pageTitle.contains("Sign In"), 
+//                 "Page title does not contain 'Sign in'!");
+//     }
+
+//     @Test(priority = 2)
+//     public void testVerifyFormElements() {
+//         System.out.println("@Test Priority 2: Verifying username field exists");
+//         driver.get("https://signin.ebay.com/ws/eBayISAPI.dll?SignIn");
+
+//         // On eBay, the password field doesn't appear until AFTER you enter a valid username.
+//         // So we can only reliably check for the username (email) input initially.
+//         WebElement usernameField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("userid")));
+//         Assert.assertTrue(usernameField.isDisplayed(), "Username/Email field is not displayed!");
+        
+//         WebElement continueButton = driver.findElement(By.id("signin-continue-btn"));
+//         Assert.assertTrue(continueButton.isDisplayed(), "Continue button is not displayed!");
+//     }
+
+//     @Test(priority = 3)
+//     public void testValidateInputConstraints() {
+//         System.out.println("@Test Priority 3: Validating empty login constraints");
+//         driver.get("https://signin.ebay.com/ws/eBayISAPI.dll?SignIn");
+
+//         WebElement continueButton = wait.until(ExpectedConditions.elementToBeClickable(By.id("signin-continue-btn")));
+        
+//         // Attempt to click continue without entering an email
+//         continueButton.click();
+
+//         // Verify that an error message appears telling the user to enter their email
+//         WebElement errorMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("errormsg")));
+//         Assert.assertTrue(errorMessage.isDisplayed(), "Error message did not appear for empty login!");
+//         Assert.assertTrue(errorMessage.getText().length() > 0, "Error message text is empty!");
+//         System.out.println("Validation Error Captured: " + errorMessage.getText());
+//     }
+
+//     @Test(priority = 4)
+//     public void testSuccessfulSubmission() {
+//         System.out.println("@Test Priority 4: Testing valid login flow (Partial)");
+//         driver.get("https://signin.ebay.com/ws/eBayISAPI.dll?SignIn");
+
+//         // 1. Enter email and click continue
+//         WebElement usernameField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("userid")));
+//         usernameField.sendKeys("testermctestface@gmail.com"); // Replace with a real test email if you have one
+        
+//         WebElement continueButton = driver.findElement(By.id("signin-continue-btn"));
+//         continueButton.click();
+
+//         // 2. Wait for the password field to appear on the next screen
+//         // NOTE: eBay may trigger a Captcha here instead of showing the password field. 
+//         // If it does, this test will fail after 10 seconds.
+//         try {
+//             WebElement passwordField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("pass")));
+//             Assert.assertTrue(passwordField.isDisplayed(), "Password field did not appear after entering username!");
+            
+//             passwordField.sendKeys("FakePassword123!");
+//             WebElement signInBtn = driver.findElement(By.id("sgnBt"));
+//             signInBtn.click();
+            
+//             System.out.println("Login submission executed successfully (Credentials may be invalid, but form worked).");
+//         } catch (org.openqa.selenium.TimeoutException e) {
+//             System.out.println("Warning: eBay security (Captcha or Email Code) blocked the password field from appearing.");
+//             throw new org.testng.SkipException("Skipping remainder of login due to eBay bot protection.");
+//         }
+//     }
+
+//     @AfterClass
+//     public void tearDown() {
+//         if (driver != null) {
+//             driver.quit();
+//         }
+//     }
+// }
