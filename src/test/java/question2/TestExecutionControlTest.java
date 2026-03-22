@@ -52,4 +52,23 @@ public class TestExecutionControlTest {
         System.out.println("Form validation passed. Forms found: " + formTags.size() + 
                            ", Total Form Controls found: " + totalFormControls);
     }
+
+    @Test(priority = 3)
+    public void testValidateInputConstraints(){
+        System.out.println("@Test: Validating input constraints on search box");
+
+        driver.get("https://www.ebay.com/");
+        
+        WebElement searchBox = driver.findElement(By.id("gh-ac"));
+        Assert.assertTrue(searchBox.isDisplayed(), "Search box is not displayed!");
+
+        String maxLength = searchBox.getAttribute("maxlength");
+        Assert.assertNotNull(maxLength, "Search box does not have a maxlength attribute!");
+        Assert.assertTrue(Integer.parseInt(maxLength) > 0, "Search box maxlength is not greater than 0!");
+
+        System.out.println("Input constraint validation passed. Search box maxlength: " + maxLength);
+    }
+
+    
+
 }
