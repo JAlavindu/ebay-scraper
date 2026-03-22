@@ -1,4 +1,4 @@
-package com.ebaytest.question1;
+package question1;
 
 import java.time.Duration;
 

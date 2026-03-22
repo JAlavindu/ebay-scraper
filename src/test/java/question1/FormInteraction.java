@@ -1,4 +1,4 @@
-package com.ebaytest.question1;
+package question1;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;

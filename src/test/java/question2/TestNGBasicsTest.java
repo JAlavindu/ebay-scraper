@@ -1,6 +1,8 @@
-package com.ebaytest.question2;
+package question2;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
@@ -30,6 +32,25 @@ public class TestNGBasicsTest {
         String pageTitle = driver.getTitle();
         System.out.println("Page title: " + pageTitle);
         Assert.assertTrue(pageTitle.contains("eBay"), "Page title does not contain 'eBay'!");
+    }
+
+    @Test
+    public void searchFunctionality(){
+        System.out.println("@Test: Verifying search box is displayed");
+
+        driver.get("https://www.ebay.com/");
+        
+        WebElement searchBox = driver.findElement(By.id("gh-ac"));
+        Assert.assertTrue(searchBox.isDisplayed(), "Search box is not displayed!");
+    }
+
+    @Test
+    public void pageElements(){
+        System.out.println("@Test: Verifying category menu and navigation links are present");
+
+        driver.get("https://www.ebay.com/");
+        WebElement categoryMenu = driver.findElement(By.id("gh-cat"));
+        Assert.assertTrue(categoryMenu.isDisplayed(), "Category menu is not displayed!");
     }
 
     @BeforeTest
