@@ -1,0 +1,28 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="Parameterized eBay Login Suite" verbose="1">
+
+    <!-- 1. Suite-level parameters: Applies to all <test> blocks unless overridden -->
+    <parameter name="browser" value="chrome" />
+    <parameter name="baseURL" value="https://signin.ebay.com/ws/eBayISAPI.dll?SignIn" />
+
+    <!-- 3. First <test> tag with specific test-level parameters (Valid Login) -->
+    <test name="Valid Login Test">
+        <!-- 2. Test-level parameters -->
+        <parameter name="username" value="realuser@example.com" />
+        <parameter name="password" value="RealPassword123!" />
+        <classes>
+            <class name="question2.ParameterizedLoginTest" />
+        </classes>
+    </test>
+
+    <!-- 3. Second <test> tag with different test-level parameters (Invalid Login) -->
+    <test name="Invalid Login Test">
+        <parameter name="username" value="fake_hacker_user@example.com" />
+        <parameter name="password" value="wrongpassword" />
+        <classes>
+            <!-- Reusing the exact same class, but TestNG will feed it the new parameters above -->
+            <class name="question2.ParameterizedLoginTest" />
+        </classes>
+    </test>
+
+</suite>
