@@ -11,7 +11,7 @@ public class BrowserCommands {
     ElementInteraction elementInteraction = new ElementInteraction();
 
     public void openBrowser(WebDriver driver) {
-
+        this.driver=driver;
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         

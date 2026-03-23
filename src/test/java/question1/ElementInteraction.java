@@ -4,6 +4,7 @@ import java.time.Duration;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -40,15 +41,30 @@ public class ElementInteraction {
         }
 
         //checkboxes
+        /*
+        By.id is generally the fastest and most efficient locator strategy in Selenium.
+        Because HTML standards dictate that id attributes should be unique across the entire page,
+        the browser can find the element instantly without having to scan the whole DOM tree (unlike XPath).
+        */
         WebElement searchCheckbox1 = driver.findElement(By.id("s0-1-20-5[1]-[0]-LH_TitleDesc"));
         searchCheckbox1.click();
         Assert.assertTrue(searchCheckbox1.isSelected(), "Search checkbox 1 was not selected!");
 
+        /* 
+        By.name is highly reliable and stable, especially for form elements.
+        Because backend servers rely on the 'name' attribute to process submitted form data,
+        it rarely changes over time, unlike dynamic IDs or easily broken XPaths.
+        */
         WebElement searchCheckbox2 = driver.findElement(By.name("LH_Complete"));
         searchCheckbox2.click();
         Assert.assertTrue(searchCheckbox2.isSelected(), "Search checkbox 2 was not selected!");
 
         //min and max price
+        /*
+        Using By.cssSelector for the price fields is a good choice because 
+        it allows us to target elements based on their attributes (like name) 
+        without relying on potentially unstable IDs or complex XPaths.
+         */
         WebElement minPricElement = driver.findElement(By.cssSelector("input[name='_udlo']"));
         minPricElement.sendKeys("100");
         String actualMinPrice = minPricElement.getAttribute("value");
@@ -70,7 +86,7 @@ public class ElementInteraction {
 
         WebElement searchButton = driver.findElement(By.xpath("//div[@class='adv-form__actions']//button[@type='submit'][normalize-space()='Search']"));
         System.out.println("button name:" + searchButton.getText());
-        searchButton.click();
+        searchButton.sendKeys(Keys.ENTER);
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         WebElement resultCountElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("h1.srp-controls__count-heading")));
