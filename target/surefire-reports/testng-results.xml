@@ -1,126 +1,89 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="5" passed="5" failed="0" skipped="0">
+<testng-results ignored="0" total="2" passed="2" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2026-03-22T23:34:14 IST" name="Surefire suite" finished-at="2026-03-22T23:36:00 IST" duration-ms="105446">
+  <suite started-at="2026-03-23T10:09:33 IST" name="Parameterized eBay Login Suite" finished-at="2026-03-23T10:10:12 IST" duration-ms="39509">
     <groups>
     </groups>
-    <test started-at="2026-03-22T23:34:14 IST" name="Surefire test" finished-at="2026-03-22T23:36:00 IST" duration-ms="105446">
-      <class name="question2.DataProviderTest">
-        <test-method is-config="true" signature="setup()[pri:0, instance:question2.DataProviderTest@35047d03]" started-at="2026-03-22T23:34:14 IST" name="setup" finished-at="2026-03-22T23:34:20 IST" duration-ms="5652" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setup -->
-        <test-method signature="testSearchFunctionality(java.lang.String,java.lang.String,boolean)[pri:0, instance:question2.DataProviderTest@35047d03]" started-at="2026-03-22T23:34:20 IST" name="testSearchFunctionality" data-provider="searchData" finished-at="2026-03-22T23:34:34 IST" duration-ms="13646" status="PASS">
+    <test started-at="2026-03-23T10:09:33 IST" name="Valid Login Test" finished-at="2026-03-23T10:09:56 IST" duration-ms="22770">
+      <class name="question2.ParameterizedLoginTest">
+        <test-method is-config="true" signature="setupBrowser(java.lang.String,java.lang.String)[pri:0, instance:question2.ParameterizedLoginTest@42e99e4a]" started-at="2026-03-23T10:09:33 IST" name="setupBrowser" finished-at="2026-03-23T10:09:42 IST" duration-ms="9612" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[laptop]]>
+                <![CDATA[chrome]]>
               </value>
             </param>
             <param index="1">
               <value>
-                <![CDATA[Computers/Tablets & Networking]]>
-              </value>
-            </param>
-            <param index="2">
-              <value>
-                <![CDATA[true]]>
+                <![CDATA[https://signin.ebay.com/ws/eBayISAPI.dll?SignIn]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- testSearchFunctionality -->
-        <test-method signature="testSearchFunctionality(java.lang.String,java.lang.String,boolean)[pri:0, instance:question2.DataProviderTest@35047d03]" started-at="2026-03-22T23:34:34 IST" name="testSearchFunctionality" data-provider="searchData" finished-at="2026-03-22T23:34:47 IST" duration-ms="13742" status="PASS">
+        </test-method> <!-- setupBrowser -->
+        <test-method signature="testDynamicLogin(java.lang.String,java.lang.String)[pri:0, instance:question2.ParameterizedLoginTest@42e99e4a]" started-at="2026-03-23T10:09:42 IST" name="testDynamicLogin" finished-at="2026-03-23T10:09:56 IST" duration-ms="13041" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[shoes]]>
+                <![CDATA[realuser@example.com]]>
               </value>
             </param>
             <param index="1">
               <value>
-                <![CDATA[Clothing, Shoes & Accessories]]>
-              </value>
-            </param>
-            <param index="2">
-              <value>
-                <![CDATA[true]]>
+                <![CDATA[RealPassword123!]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- testSearchFunctionality -->
-        <test-method signature="testSearchFunctionality(java.lang.String,java.lang.String,boolean)[pri:0, instance:question2.DataProviderTest@35047d03]" started-at="2026-03-22T23:34:47 IST" name="testSearchFunctionality" data-provider="searchData" finished-at="2026-03-22T23:35:21 IST" duration-ms="33330" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[book]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[Books & Magazines]]>
-              </value>
-            </param>
-            <param index="2">
-              <value>
-                <![CDATA[true]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- testSearchFunctionality -->
-        <test-method signature="testSearchFunctionality(java.lang.String,java.lang.String,boolean)[pri:0, instance:question2.DataProviderTest@35047d03]" started-at="2026-03-22T23:35:21 IST" name="testSearchFunctionality" data-provider="searchData" finished-at="2026-03-22T23:35:51 IST" duration-ms="30217" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[invalidSearchTerm]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[InvalidCategory]]>
-              </value>
-            </param>
-            <param index="2">
-              <value>
-                <![CDATA[false]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- testSearchFunctionality -->
-        <test-method signature="testSearchFunctionality(java.lang.String,java.lang.String,boolean)[pri:0, instance:question2.DataProviderTest@35047d03]" started-at="2026-03-22T23:35:51 IST" name="testSearchFunctionality" data-provider="searchData" finished-at="2026-03-22T23:35:58 IST" duration-ms="7306" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[All Categories]]>
-              </value>
-            </param>
-            <param index="2">
-              <value>
-                <![CDATA[false]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- testSearchFunctionality -->
-        <test-method is-config="true" signature="teardown()[pri:0, instance:question2.DataProviderTest@35047d03]" started-at="2026-03-22T23:35:58 IST" name="teardown" finished-at="2026-03-22T23:36:00 IST" duration-ms="1357" status="PASS">
+        </test-method> <!-- testDynamicLogin -->
+        <test-method is-config="true" signature="teardown()[pri:0, instance:question2.ParameterizedLoginTest@42e99e4a]" started-at="2026-03-23T10:09:56 IST" name="teardown" finished-at="2026-03-23T10:09:56 IST" duration-ms="32" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- teardown -->
-      </class> <!-- question2.DataProviderTest -->
-    </test> <!-- Surefire test -->
-  </suite> <!-- Surefire suite -->
+      </class> <!-- question2.ParameterizedLoginTest -->
+    </test> <!-- Valid Login Test -->
+    <test started-at="2026-03-23T10:09:56 IST" name="Invalid Login Test" finished-at="2026-03-23T10:10:12 IST" duration-ms="16685">
+      <class name="question2.ParameterizedLoginTest">
+        <test-method is-config="true" signature="setupBrowser(java.lang.String,java.lang.String)[pri:0, instance:question2.ParameterizedLoginTest@1bd4fdd]" started-at="2026-03-23T10:09:56 IST" name="setupBrowser" finished-at="2026-03-23T10:10:02 IST" duration-ms="6117" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[chrome]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[https://signin.ebay.com/ws/eBayISAPI.dll?SignIn]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setupBrowser -->
+        <test-method signature="testDynamicLogin(java.lang.String,java.lang.String)[pri:0, instance:question2.ParameterizedLoginTest@1bd4fdd]" started-at="2026-03-23T10:10:02 IST" name="testDynamicLogin" finished-at="2026-03-23T10:10:12 IST" duration-ms="10002" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[fake_hacker_user@example.com]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[wrongpassword]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testDynamicLogin -->
+        <test-method is-config="true" signature="teardown()[pri:0, instance:question2.ParameterizedLoginTest@1bd4fdd]" started-at="2026-03-23T10:10:12 IST" name="teardown" finished-at="2026-03-23T10:10:12 IST" duration-ms="561" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- teardown -->
+      </class> <!-- question2.ParameterizedLoginTest -->
+    </test> <!-- Invalid Login Test -->
+  </suite> <!-- Parameterized eBay Login Suite -->
 </testng-results>

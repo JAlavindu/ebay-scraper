@@ -13,6 +13,22 @@
         <maven.compiler.target>17</maven.compiler.target>
     </properties>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.2.5</version>
+                <configuration>
+                    <suiteXmlFiles>
+                        <!-- This tells Maven to look for your test.xml file in the root directory -->
+                        <suiteXmlFile>test.xml</suiteXmlFile>
+                    </suiteXmlFiles>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    
 <dependencies>
     <!-- Source: https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
 <dependency>
@@ -38,6 +54,7 @@
 </dependency>
     
 </dependencies>
+
 
 
 </project>
